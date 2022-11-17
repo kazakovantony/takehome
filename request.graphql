@@ -1,0 +1,1 @@
+{countries(filter: {code: {in: ["CA"]}}){capital}}

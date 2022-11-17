@@ -1,0 +1,4 @@
+spring:
+  application:
+    name: "takehome"
+    storage: "classpath:data/data.json"
