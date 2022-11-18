@@ -3,8 +3,11 @@ This app gets data from https://countries.trevorblades.com/graphql using query: 
 To launch with docker, you need docker installed
 
 cd ~/takehome
+
 ./gradlew clean build
+
 docker build -t takehome:0.0.1 .
+
 docker run -p 8080:8080 -d takehome:0.0.1
 
 
