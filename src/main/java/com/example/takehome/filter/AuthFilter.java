@@ -33,17 +33,17 @@ public class AuthFilter implements Filter {
 
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
-    private Map<String, User> users = new ConcurrentHashMap<>();
+    private final Map<String, User> users = new ConcurrentHashMap<>();
 
     @Override
     public void init(FilterConfig filterConfig) {
         LOGGER.trace("Initializing filter...");
         scheduler.schedule(()-> users.forEach((key, value) -> {
-                               if (System.currentTimeMillis() - value.getLastRequestTime().get() > 1000) {
+                               if (System.currentTimeMillis() - value.getLastRequestTime().get() > 100000) {
                                    users.remove(key);
                                }
                            }),
-                           1, TimeUnit.MINUTES);
+                           10, TimeUnit.MINUTES);
     }
 
     @Override
